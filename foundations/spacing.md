@@ -511,7 +511,7 @@ depending on which scale step the design actually means).
   vertical spacing for rhythm
 - [`sizing.md`](./sizing.md) (todo) — component heights, container widths, icon
   sizes
-- [`radius.md`](./radius.md) (todo) — border radius scale (separate from spacing)
+- [`radius.md`](./radius.md) — border radius scale (separate from spacing)
 - [`../concepts/padding-tokens.md`](../concepts/padding-tokens.md) (planned) —
   semantic padding-token layer (separate planning session — addresses the
   Figma-side scope restriction on `Spacing.space-*`)

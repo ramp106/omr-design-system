@@ -49,7 +49,7 @@ and decision guidance.
 | [`foundations/typography.md`](./foundations/typography.md) | stable | `txt-*` utility system, weights, fluid sizes |
 | [`foundations/spacing.md`](./foundations/spacing.md) | stable | 4 px-based scale, gap rules, layout utilities |
 | `foundations/sizing.md` | todo | Component heights, container widths, icon sizes |
-| `foundations/radius.md` | todo | `rounded-{s,m,l,full}` scale |
+| [`foundations/radius.md`](./foundations/radius.md) | stable | Tailwind v4 radius scale + directional/logical utilities |
 | `foundations/elevation.md` | todo | Surface tiers + z-index scale |
 | `foundations/effects.md` | todo | Opacity, blur, transitions, durations, easings |
 | [`foundations/breakpoints.md`](./foundations/breakpoints.md) | stable | Tablet / laptop / desktop / wide |
