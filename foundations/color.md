@@ -2,8 +2,251 @@
 title: Color
 type: foundation
 status: stable
-last_updated: 2026-05-04
+last_updated: 2026-05-11
 related: [elevation.md, typography.md, button-hierarchy.md, elevation-system.md]
+
+tokens:
+  # === Architecture ===
+  layers:
+    primitives:
+      file: "packages/config-tailwind/src/omrTheme/primitiveColors.generated.css"
+      usage: "Never use directly. Only inside semantic-token definitions."
+    semantic-light:
+      file: "packages/config-tailwind/src/omrTheme/lightTheme.generated.css"
+      usage: "Always use via Tailwind utilities. Light theme variant."
+    semantic-dark:
+      file: "packages/config-tailwind/src/omrTheme/darkTheme.generated.css"
+      usage: "Always use via Tailwind utilities. Dark theme variant. Same token names as light."
+
+  # === Primitive palette (reference only — do not reference directly) ===
+  primitive-scales:
+    grey:      [0, 25, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 975, 1000]
+    purple:    [25, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+    yellow:    [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+    blue:      [25, 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+    red:       [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+    jade:      [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+    green:     [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+    mint:      [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+    rose:      [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+
+  primitive-aliases:
+    color-white:       { resolves_to: "var(--color-grey-25)",  value: "#fdfdfd", note: "near-white" }
+    color-true-white:  { resolves_to: null,                    value: "#ffffff" }
+    color-black:       { resolves_to: "var(--color-grey-950)", value: "#0c0d0f", note: "near-black" }
+    color-true-black:  { resolves_to: null,                    value: "#000000" }
+
+  # === Text colors ===
+  text:
+    main:                       { tailwind: "text-main",                       var: "--text-color-main",                       usage: "Primary readable body text — the default" }
+    subtle:                     { tailwind: "text-subtle",                     var: "--text-color-subtle",                     usage: "Secondary / supporting text" }
+    subtlest:                   { tailwind: "text-subtlest",                   var: "--text-color-subtlest",                   usage: "Placeholder, hint text" }
+    primary:                    { tailwind: "text-primary",                    var: "--text-color-primary",                    usage: "Brand purple — emphasis, brand mentions" }
+    primary-subtle:             { tailwind: "text-primary-subtle",             var: "--text-color-primary-subtle",             usage: "Lighter brand purple text" }
+    selected:                   { tailwind: "text-selected",                   var: "--text-color-selected",                   usage: "Highlighted / selected state text" }
+    solid:                      { tailwind: "text-solid",                      var: "--text-color-solid",                      usage: "Pure black — charts, print contexts" }
+    solid-inverse:              { tailwind: "text-solid-inverse",              var: "--text-color-solid-inverse",              usage: "Pure white — charts, print contexts" }
+    inverse:                    { tailwind: "text-inverse",                    var: "--text-color-inverse",                    usage: "Text on dark backgrounds (pair with bg-surface-inverse)" }
+    disabled:                   { tailwind: "text-disabled",                   var: "--text-color-disabled",                   usage: "Disabled labels" }
+    error:                      { tailwind: "text-error",                      var: "--text-color-error",                      usage: "Error messages" }
+    error-inverse:              { tailwind: "text-error-inverse",              var: "--text-color-error-inverse",              usage: "Error text on dark backgrounds" }
+    success:                    { tailwind: "text-success",                    var: "--text-color-success",                    usage: "Success messages" }
+    success-inverse:            { tailwind: "text-success-inverse",            var: "--text-color-success-inverse",            usage: "Success text on dark backgrounds" }
+    warning:                    { tailwind: "text-warning",                    var: "--text-color-warning",                    usage: "Warning messages" }
+    warning-inverse:            { tailwind: "text-warning-inverse",            var: "--text-color-warning-inverse",            usage: "Warning text on dark backgrounds" }
+    badge-filled-success:       { tailwind: "text-badge-filled-success",       var: "--text-color-badge-filled-success",       usage: "Text on filled success badge" }
+    badge-filled-warning:       { tailwind: "text-badge-filled-warning",       var: "--text-color-badge-filled-warning",       usage: "Text on filled warning badge" }
+    badge-filled-error:         { tailwind: "text-badge-filled-error",         var: "--text-color-badge-filled-error",         usage: "Text on filled error badge" }
+
+  icon:
+    main:                       { tailwind: "text-icon-main",                  var: "--text-color-icon-main",                  usage: "Default icons" }
+    subtle:                     { tailwind: "text-icon-subtle",                var: "--text-color-icon-subtle",                usage: "Secondary icons" }
+    subtlest:                   { tailwind: "text-icon-subtlest",              var: "--text-color-icon-subtlest",              usage: "Tertiary / muted icons" }
+    primary:                    { tailwind: "text-icon-primary",               var: "--text-color-icon-primary",               usage: "Brand icons" }
+    primary-subtle:             { tailwind: "text-icon-primary-subtle",        var: "--text-color-icon-primary-subtle",        usage: "Lighter brand icons" }
+    secondary:                  { tailwind: "text-icon-secondary",             var: "--text-color-icon-secondary",             usage: "Secondary brand icons (yellow)" }
+    secondary-subtle:           { tailwind: "text-icon-secondary-subtle",      var: "--text-color-icon-secondary-subtle",      usage: "Lighter secondary icons" }
+    selected:                   { tailwind: "text-icon-selected",              var: "--text-color-icon-selected",              usage: "Selected / highlighted icons" }
+    solid:                      { tailwind: "text-icon-solid",                 var: "--text-color-icon-solid",                 usage: "Pure black icons" }
+    solid-inverse:              { tailwind: "text-icon-solid-inverse",         var: "--text-color-icon-solid-inverse",         usage: "Pure white icons" }
+    inverse:                    { tailwind: "text-icon-inverse",               var: "--text-color-icon-inverse",               usage: "Icons on dark backgrounds" }
+    disabled:                   { tailwind: "text-icon-disabled",              var: "--text-color-icon-disabled",              usage: "Disabled icons" }
+    error:                      { tailwind: "text-icon-error",                 var: "--text-color-icon-error",                 usage: "Error icons" }
+    error-inverse:              { tailwind: "text-icon-error-inverse",         var: "--text-color-icon-error-inverse",         usage: "Error icons on dark backgrounds" }
+    success:                    { tailwind: "text-icon-success",               var: "--text-color-icon-success",               usage: "Success icons" }
+    success-inverse:            { tailwind: "text-icon-success-inverse",       var: "--text-color-icon-success-inverse",       usage: "Success icons on dark backgrounds" }
+    warning:                    { tailwind: "text-icon-warning",               var: "--text-color-icon-warning",               usage: "Warning icons" }
+    warning-inverse:            { tailwind: "text-icon-warning-inverse",       var: "--text-color-icon-warning-inverse",       usage: "Warning icons on dark backgrounds" }
+    badge-filled-success:       { tailwind: "text-icon-badge-filled-success",  var: "--text-color-icon-badge-filled-success",  usage: "Icon on filled success badge" }
+    badge-filled-warning:       { tailwind: "text-icon-badge-filled-warning",  var: "--text-color-icon-badge-filled-warning",  usage: "Icon on filled warning badge" }
+    badge-filled-error:         { tailwind: "text-icon-badge-filled-error",    var: "--text-color-icon-badge-filled-error",    usage: "Icon on filled error badge" }
+
+  link:
+    main:     { tailwind: "text-link-main",     var: "--text-color-link-main",     usage: "Default link colour" }
+    primary:  { tailwind: "text-link-primary",  var: "--text-color-link-primary",  usage: "Brand-coloured link" }
+    inverse:  { tailwind: "text-link-inverse",  var: "--text-color-link-inverse",  usage: "Link on dark backgrounds" }
+    disabled: { tailwind: "text-link-disabled", var: "--text-color-link-disabled", usage: "Disabled link" }
+
+  # === Background colors ===
+  background-surface:
+    surface:                { tailwind: "bg-surface",                var: "--background-color-surface",                usage: "Page base — the canvas" }
+    solid:                  { tailwind: "bg-solid",                  var: "--background-color-solid",                  usage: "Pure white (e.g. cards on tinted pages)" }
+    surface-elevation-1:    { tailwind: "bg-surface-elevation-1",    var: "--background-color-surface-elevation-1",    usage: "+1 depth (lightest grey above page)" }
+    surface-elevation-2:    { tailwind: "bg-surface-elevation-2",    var: "--background-color-surface-elevation-2",    usage: "+2 depth" }
+    surface-elevation-3:    { tailwind: "bg-surface-elevation-3",    var: "--background-color-surface-elevation-3",    usage: "+3 depth" }
+    surface-elevation-4:    { tailwind: "bg-surface-elevation-4",    var: "--background-color-surface-elevation-4",    usage: "+4 depth" }
+    surface-elevation-5:    { tailwind: "bg-surface-elevation-5",    var: "--background-color-surface-elevation-5",    usage: "+5 depth (darkest grey, rare)" }
+    surface-inverse:        { tailwind: "bg-surface-inverse",        var: "--background-color-surface-inverse",        usage: "Dark surface (pair with text-inverse)" }
+
+  background-surface-alpha:
+    surface-alpha-elevation-1: { tailwind: "bg-surface-alpha-elevation-1", var: "--background-color-surface-alpha-elevation-1", usage: "Transparent +1 depth — content shows through" }
+    surface-alpha-elevation-2: { tailwind: "bg-surface-alpha-elevation-2", var: "--background-color-surface-alpha-elevation-2", usage: "Transparent +2 depth" }
+    surface-alpha-elevation-3: { tailwind: "bg-surface-alpha-elevation-3", var: "--background-color-surface-alpha-elevation-3", usage: "Transparent +3 depth" }
+    surface-alpha-elevation-4: { tailwind: "bg-surface-alpha-elevation-4", var: "--background-color-surface-alpha-elevation-4", usage: "Transparent +4 depth" }
+    surface-alpha-elevation-5: { tailwind: "bg-surface-alpha-elevation-5", var: "--background-color-surface-alpha-elevation-5", usage: "Transparent +5 depth" }
+
+  background-primary:
+    primary-main:        { tailwind: "bg-primary-main",        var: "--background-color-primary-main",        usage: "Brand purple fill — primary buttons, brand emphasis" }
+    primary-strong:      { tailwind: "bg-primary-strong",      var: "--background-color-primary-strong",      usage: "Darker brand purple — hover on primary" }
+    primary-stronger:    { tailwind: "bg-primary-stronger",    var: "--background-color-primary-stronger",    usage: "Even darker — pressed state" }
+    primary-strongest:   { tailwind: "bg-primary-strongest",   var: "--background-color-primary-strongest",   usage: "Darkest brand purple" }
+    primary-subtle:      { tailwind: "bg-primary-subtle",      var: "--background-color-primary-subtle",      usage: "Pale purple fill — selected items, brand banners" }
+    primary-subtler:     { tailwind: "bg-primary-subtler",     var: "--background-color-primary-subtler",     usage: "Lighter pale purple" }
+    primary-subtlest:    { tailwind: "bg-primary-subtlest",    var: "--background-color-primary-subtlest",    usage: "Lightest pale purple — backgrounds, hovers" }
+
+  background-primary-alpha:
+    primary-alpha-strong:    { tailwind: "bg-primary-alpha-strong",    var: "--background-color-primary-alpha-strong",    usage: "Transparent dark brand purple overlay" }
+    primary-alpha-stronger:  { tailwind: "bg-primary-alpha-stronger",  var: "--background-color-primary-alpha-stronger",  usage: "Transparent darker brand purple overlay" }
+    primary-alpha-strongest: { tailwind: "bg-primary-alpha-strongest", var: "--background-color-primary-alpha-strongest", usage: "Transparent darkest brand purple overlay" }
+    primary-alpha-subtle:    { tailwind: "bg-primary-alpha-subtle",    var: "--background-color-primary-alpha-subtle",    usage: "Transparent pale purple overlay" }
+    primary-alpha-subtler:   { tailwind: "bg-primary-alpha-subtler",   var: "--background-color-primary-alpha-subtler",   usage: "Transparent lighter pale purple overlay" }
+    primary-alpha-subtlest:  { tailwind: "bg-primary-alpha-subtlest",  var: "--background-color-primary-alpha-subtlest",  usage: "Transparent lightest pale purple overlay" }
+
+  background-secondary:
+    secondary-main:      { tailwind: "bg-secondary-main",      var: "--background-color-secondary-main",      usage: "Secondary yellow fill — accent elements" }
+    secondary-strong:    { tailwind: "bg-secondary-strong",    var: "--background-color-secondary-strong",    usage: "Darker secondary — hover on secondary" }
+    secondary-stronger:  { tailwind: "bg-secondary-stronger",  var: "--background-color-secondary-stronger",  usage: "Even darker secondary" }
+    secondary-strongest: { tailwind: "bg-secondary-strongest", var: "--background-color-secondary-strongest", usage: "Darkest secondary" }
+    secondary-subtle:    { tailwind: "bg-secondary-subtle",    var: "--background-color-secondary-subtle",    usage: "Pale yellow fill" }
+    secondary-subtler:   { tailwind: "bg-secondary-subtler",   var: "--background-color-secondary-subtler",   usage: "Lighter pale yellow" }
+    secondary-subtlest:  { tailwind: "bg-secondary-subtlest",  var: "--background-color-secondary-subtlest",  usage: "Lightest pale yellow — backgrounds" }
+
+  background-status:
+    error-strong:    { tailwind: "bg-error-strong",    var: "--background-color-error-strong",    usage: "Solid error fill — high-emphasis indicators" }
+    error-subtle:    { tailwind: "bg-error-subtle",    var: "--background-color-error-subtle",    usage: "Pale error tint — banners, badges" }
+    success-strong:  { tailwind: "bg-success-strong",  var: "--background-color-success-strong",  usage: "Solid success fill" }
+    success-subtle:  { tailwind: "bg-success-subtle",  var: "--background-color-success-subtle",  usage: "Pale success tint" }
+    warning-strong:  { tailwind: "bg-warning-strong",  var: "--background-color-warning-strong",  usage: "Solid warning fill" }
+    warning-subtle:  { tailwind: "bg-warning-subtle",  var: "--background-color-warning-subtle",  usage: "Pale warning tint" }
+    disabled:        { tailwind: "bg-disabled",        var: "--background-color-disabled",        usage: "Disabled element fill" }
+
+  background-badge:
+    badge-filled-success: { tailwind: "bg-badge-filled-success", var: "--background-color-badge-filled-success", usage: "Filled success badge background" }
+    badge-filled-warning: { tailwind: "bg-badge-filled-warning", var: "--background-color-badge-filled-warning", usage: "Filled warning badge background" }
+    badge-filled-error:   { tailwind: "bg-badge-filled-error",   var: "--background-color-badge-filled-error",   usage: "Filled error badge background" }
+
+  background-component:
+    # Reference only — use semantic tokens above for general UI
+    button:    ["button-outline", "button-outline-color", "button-outline-destructive", "button-outline-success", "button-primary-color", "button-primary-destructive", "button-primary-neutral", "button-primary-success", "button-secondary-color", "button-secondary-destructive", "button-secondary-neutral", "button-secondary-success"]
+    timetable: ["timetable-event-active", "timetable-event-inactive", "timetable-event-passed", "timetable-meeting-active", "timetable-meeting-inactive", "timetable-meeting-passed"]
+    ui-chrome: ["scrollbar-handle", "toggle-inactive"]
+
+  background-backdrop:
+    effect-backdrop-overlay: { tailwind: "bg-effect-backdrop-overlay", var: "--background-color-effect-backdrop-overlay", usage: "Modal backdrop — pair with backdrop-blur-xs" }
+    effect-focused:          { tailwind: "bg-effect-focused",          var: "--background-color-effect-focused",          usage: "Focus ring background (rare — see effect-text)" }
+
+  # === Border colors ===
+  border:
+    main:                   { tailwind: "border-main",                   var: "--border-color-main",                   usage: "Default border — most cards, inputs, dividers" }
+    main-solid:             { tailwind: "border-main-solid",             var: "--border-color-main-solid",             usage: "Solid (no alpha) variant for crisp edges" }
+    subtle:                 { tailwind: "border-subtle",                 var: "--border-color-subtle",                 usage: "De-emphasised dividers" }
+    strong:                 { tailwind: "border-strong",                 var: "--border-color-strong",                 usage: "Strong emphasis — modal headers, sticky bars" }
+    primary:                { tailwind: "border-primary",                var: "--border-color-primary",                usage: "Brand purple border" }
+    primary-solid:          { tailwind: "border-primary-solid",          var: "--border-color-primary-solid",          usage: "Solid brand border" }
+    primary-subtle:         { tailwind: "border-primary-subtle",         var: "--border-color-primary-subtle",         usage: "Subtle brand purple border" }
+    primary-subtle-solid:   { tailwind: "border-primary-subtle-solid",   var: "--border-color-primary-subtle-solid",   usage: "Solid subtle brand border" }
+    secondary:              { tailwind: "border-secondary",              var: "--border-color-secondary",              usage: "Secondary yellow border" }
+    secondary-subtle:       { tailwind: "border-secondary-subtle",       var: "--border-color-secondary-subtle",       usage: "Subtle secondary border" }
+    error:                  { tailwind: "border-error",                  var: "--border-color-error",                  usage: "Error state — invalid inputs" }
+    error-subtle:           { tailwind: "border-error-subtle",           var: "--border-color-error-subtle",           usage: "Subtle error border — banners" }
+    success:                { tailwind: "border-success",                var: "--border-color-success",                usage: "Success state" }
+    success-subtle:         { tailwind: "border-success-subtle",         var: "--border-color-success-subtle",         usage: "Subtle success border" }
+    warning:                { tailwind: "border-warning",                var: "--border-color-warning",                usage: "Warning state" }
+    warning-subtle:         { tailwind: "border-warning-subtle",         var: "--border-color-warning-subtle",         usage: "Subtle warning border" }
+    selected:               { tailwind: "border-selected",               var: "--border-color-selected",               usage: "Selection indicator (chips, radio, options)" }
+    disabled:               { tailwind: "border-disabled",               var: "--border-color-disabled",               usage: "Disabled state" }
+    inverse:                { tailwind: "border-inverse",                var: "--border-color-inverse",                usage: "Border on dark backgrounds" }
+
+  # === Effect colors (focus, overlays) ===
+  effect-text:
+    focused:                       { tailwind: "text-effect-focused",                       var: "--text-color-effect-focused",                       usage: "Focus ring outline colour (2px solid)" }
+    backdrop-overlay:              { tailwind: "text-effect-backdrop-overlay",              var: "--text-color-effect-backdrop-overlay",              usage: "Text overlay on backdrop" }
+    overlay-surface-solid:         { tailwind: "text-effect-overlay-surface-solid",         var: "--text-color-effect-overlay-surface-solid",         usage: "Text on solid overlay surface" }
+    overlay-surface-strongest:     { tailwind: "text-effect-overlay-surface-strongest",     var: "--text-color-effect-overlay-surface-strongest",     usage: "Text on strongest overlay surface" }
+    overlay-surface-subtlest:      { tailwind: "text-effect-overlay-surface-subtlest",      var: "--text-color-effect-overlay-surface-subtlest",      usage: "Text on subtlest overlay surface" }
+    overlay-surface-transparent:   { tailwind: "text-effect-overlay-surface-transparent",   var: "--text-color-effect-overlay-surface-transparent",   usage: "Text on transparent overlay surface" }
+
+  effect-background:
+    focused:                       { tailwind: "bg-effect-focused",                         var: "--background-color-effect-focused",                       usage: "Focus ring background" }
+    backdrop-overlay:              { tailwind: "bg-effect-backdrop-overlay",                var: "--background-color-effect-backdrop-overlay",              usage: "Modal backdrop overlay" }
+    overlay-surface-solid:         { tailwind: "bg-effect-overlay-surface-solid",           var: "--background-color-effect-overlay-surface-solid",         usage: "Solid overlay surface background" }
+    overlay-surface-strongest:     { tailwind: "bg-effect-overlay-surface-strongest",       var: "--background-color-effect-overlay-surface-strongest",     usage: "Strongest overlay surface background" }
+    overlay-surface-subtlest:      { tailwind: "bg-effect-overlay-surface-subtlest",        var: "--background-color-effect-overlay-surface-subtlest",      usage: "Subtlest overlay surface background" }
+    overlay-surface-transparent:   { tailwind: "bg-effect-overlay-surface-transparent",     var: "--background-color-effect-overlay-surface-transparent",   usage: "Transparent overlay surface background" }
+
+  effect-utilities:
+    omr-focus-visible-outline: { source: "utilities.css", usage: "Focus ring for open layouts" }
+    omr-focus-visible-inset:   { source: "utilities.css", usage: "Focus ring for clipped containers (overflow-hidden)" }
+    blur-overlay-style:        { source: "utilities.css", composes: ["bg-effect-backdrop-overlay", "backdrop-blur-xs"] }
+
+  # === Graphic colors (charts, illustrations) ===
+  graphic-core:
+    black:    { tailwind: "graphic-black",    var: "--graphic-color-black",    usage: "Black graphic element" }
+    white:    { tailwind: "graphic-white",    var: "--graphic-color-white",    usage: "White graphic element" }
+    disabled: { tailwind: "graphic-disabled", var: "--graphic-color-disabled", usage: "Disabled/inactive graphic element" }
+
+  graphic-status:
+    error:   { tailwind: "graphic-error",   var: "--graphic-color-error",   usage: "Error indicator in graphics" }
+    success: { tailwind: "graphic-success", var: "--graphic-color-success", usage: "Success indicator in graphics" }
+    warning: { tailwind: "graphic-warning", var: "--graphic-color-warning", usage: "Warning indicator in graphics" }
+
+  graphic-grey:
+    grey-subtle: { tailwind: "graphic-grey-subtle", var: "--graphic-color-grey-subtle", usage: "Light grey — background fills, grid lines" }
+    grey-medium: { tailwind: "graphic-grey-medium", var: "--graphic-color-grey-medium", usage: "Medium grey — secondary data series" }
+    grey-strong: { tailwind: "graphic-grey-strong", var: "--graphic-color-grey-strong", usage: "Dark grey — labels, axes" }
+
+  graphic-primary:
+    primary-subtle: { tailwind: "graphic-primary-subtle", var: "--graphic-color-primary-subtle", usage: "Light purple — area fills, backgrounds" }
+    primary-medium: { tailwind: "graphic-primary-medium", var: "--graphic-color-primary-medium", usage: "Medium purple — secondary series" }
+    primary-strong: { tailwind: "graphic-primary-strong", var: "--graphic-color-primary-strong", usage: "Dark purple — primary data series, key metrics" }
+
+  graphic-secondary:
+    secondary-subtle: { tailwind: "graphic-secondary-subtle", var: "--graphic-color-secondary-subtle", usage: "Light yellow — area fills" }
+    secondary-medium: { tailwind: "graphic-secondary-medium", var: "--graphic-color-secondary-medium", usage: "Medium yellow — secondary accent" }
+    secondary-strong: { tailwind: "graphic-secondary-strong", var: "--graphic-color-secondary-strong", usage: "Dark yellow — accent data series" }
+
+  graphic-tertiary:
+    tertiary-subtle: { tailwind: "graphic-tertiary-subtle", var: "--graphic-color-tertiary-subtle", usage: "Light tertiary — area fills" }
+    tertiary-medium: { tailwind: "graphic-tertiary-medium", var: "--graphic-color-tertiary-medium", usage: "Medium tertiary — third data series" }
+    tertiary-strong: { tailwind: "graphic-tertiary-strong", var: "--graphic-color-tertiary-strong", usage: "Dark tertiary — tertiary data series" }
+
+  # === Interaction state layers ===
+  state-layer-composites:
+    state-layer-neutral:         { tailwind: "state-layer-neutral",         usage: "Neutral interactive surfaces (cards, list items)", triggers: { hover: "bg-state-hover-neutral", pressed: "bg-state-pressed-neutral", drag: "bg-state-drag-neutral" } }
+    state-layer-primary:         { tailwind: "state-layer-primary",         usage: "Brand-coloured interactive elements",              triggers: { hover: "bg-state-hover-primary", pressed: "bg-state-pressed-primary", drag: "bg-state-drag-primary" } }
+    state-layer-neutral-inverse: { tailwind: "state-layer-neutral-inverse", usage: "Dark-themed surfaces",                              triggers: { hover: "bg-state-hover-neutral-inverse", pressed: "bg-state-pressed-neutral-inverse", drag: "bg-state-drag-neutral-inverse" } }
+
+  state-raw:
+    # For custom implementations only — prefer state-layer-* composites
+    hover-neutral:           { tailwind: "bg-state-hover-neutral",           var: "--background-color-state-hover-neutral",           trigger: "hover on neutral surface" }
+    pressed-neutral:         { tailwind: "bg-state-pressed-neutral",         var: "--background-color-state-pressed-neutral",         trigger: "press on neutral surface" }
+    drag-neutral:            { tailwind: "bg-state-drag-neutral",            var: "--background-color-state-drag-neutral",            trigger: "drag on neutral surface" }
+    hover-neutral-inverse:   { tailwind: "bg-state-hover-neutral-inverse",   var: "--background-color-state-hover-neutral-inverse",   trigger: "hover on dark surface" }
+    pressed-neutral-inverse: { tailwind: "bg-state-pressed-neutral-inverse", var: "--background-color-state-pressed-neutral-inverse", trigger: "press on dark surface" }
+    drag-neutral-inverse:    { tailwind: "bg-state-drag-neutral-inverse",    var: "--background-color-state-drag-neutral-inverse",    trigger: "drag on dark surface" }
+    hover-primary:           { tailwind: "bg-state-hover-primary",           var: "--background-color-state-hover-primary",           trigger: "hover on brand surface" }
+    pressed-primary:         { tailwind: "bg-state-pressed-primary",         var: "--background-color-state-pressed-primary",         trigger: "press on brand surface" }
+    drag-primary:            { tailwind: "bg-state-drag-primary",            var: "--background-color-state-drag-primary",            trigger: "drag on brand surface" }
 ---
 
 # Color

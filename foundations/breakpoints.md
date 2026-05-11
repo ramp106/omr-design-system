@@ -2,8 +2,42 @@
 title: Breakpoints
 type: foundation
 status: stable
-last_updated: 2026-05-04
+last_updated: 2026-05-11
 related: [typography.md, spacing.md, elevation.md]
+
+tokens:
+  breakpoints:
+    mobile:  { min_px: 0,    tailwind_prefix: null,       css_var: null,                  width_var: null,             notes: "Default base styles; no prefix" }
+    tablet:  { min_px: 640,  tailwind_prefix: "tablet:",  css_var: "--breakpoint-tablet",  width_var: "--width-tablet",  notes: "Large phones landscape, small tablets" }
+    laptop:  { min_px: 1024, tailwind_prefix: "laptop:",  css_var: "--breakpoint-laptop",  width_var: "--width-laptop",  notes: "Tablets landscape, laptops" }
+    desktop: { min_px: 1440, tailwind_prefix: "desktop:", css_var: "--breakpoint-desktop", width_var: "--width-desktop", notes: "Desktop monitors" }
+    wide:    { min_px: 1920, tailwind_prefix: null,       css_var: "--breakpoint-wide",    width_var: "--width-wide",    notes: "CSS-var only — no Tailwind prefix. Use @media (min-width: var(--breakpoint-wide))" }
+
+  responsive-utilities:
+    responsive-container:
+      source: "packages/config-tailwind/styles/utilities.css"
+      values:
+        mobile:  "px-4"
+        tablet:  "px-6"
+        laptop:  "px-8"
+        desktop: "px-16 max-w-[1440px] mx-auto"
+      usage: "Page-level wrapper; bumps horizontal padding per breakpoint and caps content width on desktop"
+    grid-gap:
+      source: "packages/config-tailwind/styles/utilities.css"
+      values:
+        mobile_to_laptop: "gap-4"
+        desktop:          "gap-6"
+      usage: "Responsive gap for 12-column grids"
+    grid-container:
+      source: "packages/config-tailwind/styles/utilities.css"
+      composes: ["responsive-container", "grid", "grid-cols-12", "grid-gap", "w-full"]
+      usage: "Composite — page-level 12-col grid wrapper"
+
+  js-runtime:
+    composable: "useDisplay"
+    import_from: "@ramp106/omrjs-core-ui"
+    returns: ["breakpoint", "width", "height", "isMobile", "isInitialized"]
+    is_mobile_definition: "true when breakpoint is Mobile or Tablet (< 1024px)"
 ---
 
 # Breakpoints

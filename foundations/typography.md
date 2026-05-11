@@ -2,8 +2,126 @@
 title: Typography
 type: foundation
 status: stable
-last_updated: 2026-05-04
+last_updated: 2026-05-11
 related: [color.md, spacing.md, breakpoints.md]
+
+tokens:
+  font-families:
+    sans: { tailwind: "font-sans", css_var: "--font-sans", value: "'OMR One', 'Avenir', 'Helvetica', 'Arial', sans-serif", usage: "Default for all UI text" }
+    mono: { tailwind: "font-mono", css_var: "--font-mono", value: "'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace", usage: "Code blocks, technical content" }
+
+  font-files:
+    omr-one:   { file: "omr-one.css",   type: "variable (woff2)", weight_range: "400-800", usage: "Primary brand font — all new UI" }
+    omr-sans:  { file: "omr-sans.css",  type: "static (woff2/woff)", weights: { regular: "100-400", bold: "500-700", extra-bold: "800-900" }, usage: "Fallback, legacy use" }
+    futura-nd: { file: "futurand.css",  type: "static",           weight_range: "100-900",  usage: "Legacy only — do not use in new UI" }
+
+  base-tokens:
+    text-base:             { css_var: "--text-base",             value: "16px", usage: "Root font size on <html>" }
+    text-base-line-height: { css_var: "--text-base-line-height", value: "24px", usage: "Root line height" }
+
+  # === Label utilities — static, no fluid scaling. UI chrome only. ===
+  label-utilities:
+    label-s-regular:           { tailwind: "txt-label-s-regular",           size: "12px",  weight: 400, leading: "140%", tracking: "wider" }
+    label-s-medium:            { tailwind: "txt-label-s-medium",            size: "12px",  weight: 500, leading: "140%", tracking: "wider" }
+    label-s-semibold:          { tailwind: "txt-label-s-semibold",          size: "12px",  weight: 600, leading: "140%", tracking: "wider" }
+    label-s-bold:              { tailwind: "txt-label-s-bold",              size: "12px",  weight: 700, leading: "140%", tracking: "wider" }
+    label-s-bold-uppercase:    { tailwind: "txt-label-s-bold-uppercase",    size: "12px",  weight: 700, leading: "140%", tracking: "wider", uppercase: true }
+    label-m-regular:           { tailwind: "txt-label-m-regular",           size: "14px",  weight: 400, leading: "140%", tracking: "wider" }
+    label-m-medium:            { tailwind: "txt-label-m-medium",            size: "14px",  weight: 500, leading: "140%", tracking: "wider" }
+    label-m-semibold:          { tailwind: "txt-label-m-semibold",          size: "14px",  weight: 600, leading: "140%", tracking: "wider" }
+    label-m-bold:              { tailwind: "txt-label-m-bold",              size: "14px",  weight: 700, leading: "140%", tracking: "wider" }
+    label-m-bold-uppercase:    { tailwind: "txt-label-m-bold-uppercase",    size: "14px",  weight: 700, leading: "140%", tracking: "wider", uppercase: true }
+
+  # === Body utilities — fluid scaling from laptop breakpoint via clamp() ===
+  body-utilities:
+    body-s-regular:   { tailwind: "txt-body-s-regular",   size_mobile: "14px", size_laptop_plus: "16px", weight: 400, leading: "140%", tracking: "wide" }
+    body-s-medium:    { tailwind: "txt-body-s-medium",    size_mobile: "14px", size_laptop_plus: "16px", weight: 500, leading: "140%", tracking: "wide" }
+    body-s-semibold:  { tailwind: "txt-body-s-semibold",  size_mobile: "14px", size_laptop_plus: "16px", weight: 600, leading: "140%", tracking: "wide" }
+    body-s-bold:      { tailwind: "txt-body-s-bold",      size_mobile: "14px", size_laptop_plus: "16px", weight: 700, leading: "140%", tracking: "wide" }
+    body-m-regular:   { tailwind: "txt-body-m-regular",   size_mobile: "16px", size_laptop_plus: "18px", weight: 400, leading: "140%", tracking: "normal" }
+    body-m-medium:    { tailwind: "txt-body-m-medium",    size_mobile: "16px", size_laptop_plus: "18px", weight: 500, leading: "140%", tracking: "normal" }
+    body-m-semibold:  { tailwind: "txt-body-m-semibold",  size_mobile: "16px", size_laptop_plus: "18px", weight: 600, leading: "140%", tracking: "normal" }
+    body-m-bold:      { tailwind: "txt-body-m-bold",      size_mobile: "16px", size_laptop_plus: "18px", weight: 700, leading: "140%", tracking: "normal" }
+    body-l-regular:   { tailwind: "txt-body-l-regular",   size_mobile: "18px", size_laptop_plus: "20px", weight: 400, leading: "140%", tracking: "normal" }
+    body-l-medium:    { tailwind: "txt-body-l-medium",    size_mobile: "18px", size_laptop_plus: "20px", weight: 500, leading: "140%", tracking: "normal" }
+    body-l-semibold:  { tailwind: "txt-body-l-semibold",  size_mobile: "18px", size_laptop_plus: "20px", weight: 600, leading: "140%", tracking: "normal" }
+    body-l-bold:      { tailwind: "txt-body-l-bold",      size_mobile: "18px", size_laptop_plus: "20px", weight: 700, leading: "140%", tracking: "normal" }
+    body-xl-regular:  { tailwind: "txt-body-xl-regular",  size_mobile: "20px", size_laptop_plus: "22px", weight: 400, leading: "140%", tracking: "normal" }
+    body-xl-medium:   { tailwind: "txt-body-xl-medium",   size_mobile: "20px", size_laptop_plus: "22px", weight: 500, leading: "140%", tracking: "normal" }
+    body-xl-semibold: { tailwind: "txt-body-xl-semibold", size_mobile: "20px", size_laptop_plus: "22px", weight: 600, leading: "140%", tracking: "normal" }
+    body-xl-bold:     { tailwind: "txt-body-xl-bold",     size_mobile: "20px", size_laptop_plus: "22px", weight: 700, leading: "140%", tracking: "normal" }
+
+  # === Headline utilities — fluid scaling from tablet (2xl+) or laptop (smaller) ===
+  headline-utilities:
+    headline-s-semibold:              { tailwind: "txt-headline-s-semibold",              size_mobile: "14px", size_laptop_plus: "16px", weight: 600, leading: "120%", tracking: "wide" }
+    headline-s-bold:                  { tailwind: "txt-headline-s-bold",                  size_mobile: "14px", size_laptop_plus: "16px", weight: 700, leading: "120%", tracking: "wide" }
+    headline-s-extrabold-uppercase:   { tailwind: "txt-headline-s-extrabold-uppercase",   size_mobile: "14px", size_laptop_plus: "16px", weight: 800, leading: "120%", tracking: "wide", uppercase: true }
+    headline-m-semibold:              { tailwind: "txt-headline-m-semibold",              size_mobile: "16px", size_laptop_plus: "18px", weight: 600, leading: "120%", tracking: "normal" }
+    headline-m-bold:                  { tailwind: "txt-headline-m-bold",                  size_mobile: "16px", size_laptop_plus: "18px", weight: 700, leading: "120%", tracking: "normal" }
+    headline-m-extrabold-uppercase:   { tailwind: "txt-headline-m-extrabold-uppercase",   size_mobile: "16px", size_laptop_plus: "18px", weight: 800, leading: "120%", tracking: "wider", uppercase: true }
+    headline-l-semibold:              { tailwind: "txt-headline-l-semibold",              size_mobile: "18px", size_laptop_plus: "20px", weight: 600, leading: "120%", tracking: "normal" }
+    headline-l-bold:                  { tailwind: "txt-headline-l-bold",                  size_mobile: "18px", size_laptop_plus: "20px", weight: 700, leading: "120%", tracking: "normal" }
+    headline-l-extrabold-uppercase:   { tailwind: "txt-headline-l-extrabold-uppercase",   size_mobile: "18px", size_laptop_plus: "20px", weight: 800, leading: "120%", tracking: "wider", uppercase: true }
+    headline-xl-semibold:             { tailwind: "txt-headline-xl-semibold",             size_mobile: "20px", size_laptop_plus: "22px", weight: 600, leading: "120%", tracking: "normal" }
+    headline-xl-bold:                 { tailwind: "txt-headline-xl-bold",                 size_mobile: "20px", size_laptop_plus: "22px", weight: 700, leading: "120%", tracking: "normal" }
+    headline-xl-extrabold-uppercase:  { tailwind: "txt-headline-xl-extrabold-uppercase",  size_mobile: "20px", size_laptop_plus: "22px", weight: 800, leading: "120%", tracking: "wider", uppercase: true }
+    headline-2xl-semibold:            { tailwind: "txt-headline-2xl-semibold",            size_mobile: "22px", size_laptop_plus: "28px", weight: 600, leading: "120%", tracking: "normal" }
+    headline-2xl-bold:                { tailwind: "txt-headline-2xl-bold",                size_mobile: "22px", size_laptop_plus: "28px", weight: 700, leading: "120%", tracking: "normal" }
+    headline-2xl-extrabold-uppercase: { tailwind: "txt-headline-2xl-extrabold-uppercase", size_mobile: "22px", size_laptop_plus: "28px", weight: 800, leading: "120%", tracking: "wide", uppercase: true }
+    headline-3xl-semibold:            { tailwind: "txt-headline-3xl-semibold",            size_mobile: "26px", size_laptop_plus: "36px", weight: 600, leading: "120%", tracking: "normal" }
+    headline-3xl-bold:                { tailwind: "txt-headline-3xl-bold",                size_mobile: "26px", size_laptop_plus: "36px", weight: 700, leading: "120%", tracking: "normal" }
+    headline-3xl-extrabold-uppercase: { tailwind: "txt-headline-3xl-extrabold-uppercase", size_mobile: "26px", size_laptop_plus: "36px", weight: 800, leading: "120%", tracking: "wide", uppercase: true }
+    headline-4xl-semibold:            { tailwind: "txt-headline-4xl-semibold",            size_mobile: "32px", size_laptop_plus: "48px", weight: 600, leading: "120%", tracking: "normal" }
+    headline-4xl-bold:                { tailwind: "txt-headline-4xl-bold",                size_mobile: "32px", size_laptop_plus: "48px", weight: 700, leading: "120%", tracking: "normal" }
+    headline-4xl-extrabold-uppercase: { tailwind: "txt-headline-4xl-extrabold-uppercase", size_mobile: "32px", size_laptop_plus: "48px", weight: 800, leading: "120%", tracking: "normal", uppercase: true }
+    headline-5xl-semibold:            { tailwind: "txt-headline-5xl-semibold",            size_mobile: "38px", size_laptop_plus: "60px", weight: 600, leading: "120%", tracking: "normal" }
+    headline-5xl-bold:                { tailwind: "txt-headline-5xl-bold",                size_mobile: "38px", size_laptop_plus: "60px", weight: 700, leading: "120%", tracking: "normal" }
+    headline-5xl-extrabold-uppercase: { tailwind: "txt-headline-5xl-extrabold-uppercase", size_mobile: "38px", size_laptop_plus: "60px", weight: 800, leading: "120%", tracking: "normal", uppercase: true }
+
+  # === Display utilities — aggressive fluid scaling across mobile/tablet/laptop ===
+  display-utilities:
+    display-s-semibold:               { tailwind: "txt-display-s-semibold",              size_mobile: "44px", size_tablet: "60px", size_laptop_plus: "72px",  weight: 600, leading: "120%", tracking: "normal" }
+    display-s-bold:                   { tailwind: "txt-display-s-bold",                  size_mobile: "44px", size_tablet: "60px", size_laptop_plus: "72px",  weight: 700, leading: "120%", tracking: "normal" }
+    display-s-extrabold-uppercase:    { tailwind: "txt-display-s-extrabold-uppercase",   size_mobile: "44px", size_tablet: "60px", size_laptop_plus: "72px",  weight: 800, leading: "120%", tracking: "normal", uppercase: true }
+    display-m-semibold:               { tailwind: "txt-display-m-semibold",              size_mobile: "48px", size_tablet: "66px", size_laptop_plus: "84px",  weight: 600, leading: "120%", tracking: "normal" }
+    display-m-bold:                   { tailwind: "txt-display-m-bold",                  size_mobile: "48px", size_tablet: "66px", size_laptop_plus: "84px",  weight: 700, leading: "120%", tracking: "normal" }
+    display-m-extrabold-uppercase:    { tailwind: "txt-display-m-extrabold-uppercase",   size_mobile: "48px", size_tablet: "66px", size_laptop_plus: "84px",  weight: 800, leading: "120%", tracking: "tight", uppercase: true }
+    display-l-semibold:               { tailwind: "txt-display-l-semibold",              size_mobile: "48px", size_tablet: "72px", size_laptop_plus: "96px",  weight: 600, leading: "120%", tracking: "tight" }
+    display-l-bold:                   { tailwind: "txt-display-l-bold",                  size_mobile: "48px", size_tablet: "72px", size_laptop_plus: "96px",  weight: 700, leading: "120%", tracking: "tight" }
+    display-l-extrabold-uppercase:    { tailwind: "txt-display-l-extrabold-uppercase",   size_mobile: "48px", size_tablet: "72px", size_laptop_plus: "96px",  weight: 800, leading: "120%", tracking: "tight", uppercase: true }
+    display-xl-semibold:              { tailwind: "txt-display-xl-semibold",             size_mobile: "48px", size_tablet: "84px", size_laptop_plus: "108px", weight: 600, leading: "120%", tracking: "tight" }
+    display-xl-bold:                  { tailwind: "txt-display-xl-bold",                 size_mobile: "48px", size_tablet: "84px", size_laptop_plus: "108px", weight: 700, leading: "120%", tracking: "tight" }
+    display-xl-extrabold-uppercase:   { tailwind: "txt-display-xl-extrabold-uppercase",  size_mobile: "48px", size_tablet: "84px", size_laptop_plus: "108px", weight: 800, leading: "120%", tracking: "tight", uppercase: true }
+
+  tracking-tokens:
+    tighter: { tailwind: "tracking-tighter", css_var: "--tracking-tighter", value: "-2%" }
+    tight:   { tailwind: "tracking-tight",   css_var: "--tracking-tight",   value: "-1%" }
+    normal:  { tailwind: "tracking-normal",  css_var: "--tracking-normal",  value: "0" }
+    wide:    { tailwind: "tracking-wide",    css_var: "--tracking-wide",    value: "1%" }
+    wider:   { tailwind: "tracking-wider",   css_var: "--tracking-wider",   value: "2%" }
+
+  leading-tokens:
+    none:   { tailwind: "leading-none",   css_var: null,              value: "100%", note: "Tailwind built-in" }
+    tight:  { tailwind: "leading-tight",  css_var: "--leading-tight", value: "120%", used_by: "headlines, display" }
+    normal: { tailwind: "leading-normal", css_var: "--leading-normal", value: "140%", used_by: "labels, body" }
+    wide:   { tailwind: "leading-wide",   css_var: "--leading-wide",   value: "160%", note: "available but not used by default utilities" }
+
+  helpers:
+    text-pretty:  { tailwind: "text-pretty",  effect: "text-wrap: pretty (avoid orphans/widows)", apply_to: "body text" }
+    text-balance: { tailwind: "text-balance", effect: "text-wrap: balance (even line lengths)",    apply_to: "headlines, short text blocks" }
+    max-w-prose:  { tailwind: "max-w-prose",  effect: "max-width: 65ch",                            apply_to: "paragraph containers" }
+    hyphens-auto: { tailwind: "hyphens-auto", effect: "hyphens: auto",                              apply_to: "narrow columns with long words" }
+    hyphens-none: { tailwind: "hyphens-none", effect: "hyphens: none (default; explicit override)" }
+
+  html-element-defaults:
+    # Applied inside text-common-styles scopes (CMS content, rich text)
+    h1:   { tailwind: "txt-headline-4xl" }
+    h2:   { tailwind: "txt-headline-3xl" }
+    h3:   { tailwind: "txt-headline-2xl" }
+    h4:   { tailwind: "txt-headline-l" }
+    h5:   { tailwind: "txt-headline-m" }
+    p:    { tailwind: "txt-body-m" }
+    body: { tailwind: "text-body-s", note: "via @layer base" }
 ---
 
 # Typography

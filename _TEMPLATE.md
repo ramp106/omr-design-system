@@ -1,9 +1,29 @@
 ---
+# === Metadata ===
 title: [Foundation or Concept Name]
 type: foundation        # foundation | concept
 status: draft           # draft | stable | deprecated
 last_updated: YYYY-MM-DD
 related: []             # ["color.md", "spacing.md"]
+
+# === Tokens (machine-readable source of truth) ===
+# Optional but recommended. AI tools should be able to read every available
+# token from this block without parsing markdown tables. The markdown body
+# below presents the same data in human-readable form, plus rules and examples.
+#
+# Schema conventions:
+# - Group tokens by semantic category (e.g. `text`, `background`, `border`)
+# - One token per row, compact `{ key: value, ... }` form when possible
+# - Use string values for CSS-ish data (`"12px"`, `"oklch(...)"`)
+# - Every token should expose at least: tailwind utility, css-var, usage
+#
+# Example shape (delete or replace per foundation):
+tokens:
+  example-category:
+    example-token:
+      tailwind: "text-main"
+      var: "--text-color-main"
+      usage: "Primary readable body text — the default"
 ---
 
 # [Foundation or Concept Name]
