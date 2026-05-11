@@ -94,7 +94,7 @@ caps content width at desktop.
 | mobile | `px-4` (16px padding) |
 | tablet | `px-6` (24px padding) |
 | laptop | `px-8` (32px padding) |
-| desktop | `max-w-[1440px] px-[60px] mx-auto` (60px padding, centered, 1440px max) |
+| desktop | `max-w-[1440px] px-16 mx-auto` (64px padding, centered, 1440px max) |
 
 ### `grid-gap`
 
@@ -236,6 +236,6 @@ const { breakpoint } = useDisplay()
 ## Cross-references
 
 - [`typography.md`](./typography.md) — fluid typography uses tablet/laptop breakpoints for `clamp()` scaling
-- [`spacing.md`](./spacing.md) (todo) — responsive spacing patterns
+- [`spacing.md`](./spacing.md) — responsive spacing patterns
 - [`../concepts/density-and-rhythm.md`](../concepts/density-and-rhythm.md) (todo) — how layout density changes across breakpoints
 - [`../CLAUDE.md`](../CLAUDE.md) — agent rules

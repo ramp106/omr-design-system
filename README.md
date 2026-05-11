@@ -2,7 +2,7 @@
 title: OMR Design System Documentation
 type: index
 status: in-progress
-last_updated: 2026-05-04
+last_updated: 2026-05-10
 ---
 
 # OMR Design System Documentation
@@ -46,13 +46,13 @@ and decision guidance.
 | File | Status | Content |
 |---|---|---|
 | [`foundations/color.md`](./foundations/color.md) | stable | Semantic color tokens: text, bg, border, status, state, effects |
-| `foundations/typography.md` | todo | `txt-*` utility system, weights, fluid sizes |
-| `foundations/spacing.md` | todo | 4 px-based scale, gap rules, layout utilities |
+| [`foundations/typography.md`](./foundations/typography.md) | stable | `txt-*` utility system, weights, fluid sizes |
+| [`foundations/spacing.md`](./foundations/spacing.md) | stable | 4 px-based scale, gap rules, layout utilities |
 | `foundations/sizing.md` | todo | Component heights, container widths, icon sizes |
 | `foundations/radius.md` | todo | `rounded-{s,m,l,full}` scale |
 | `foundations/elevation.md` | todo | Surface tiers + z-index scale |
 | `foundations/effects.md` | todo | Opacity, blur, transitions, durations, easings |
-| `foundations/breakpoints.md` | todo | Tablet / laptop / desktop / wide |
+| [`foundations/breakpoints.md`](./foundations/breakpoints.md) | stable | Tablet / laptop / desktop / wide |
 
 ## Concepts — the grammar
 
@@ -61,6 +61,7 @@ One file per cross-cutting decision.
 
 | File | Status | Foundations involved |
 |---|---|---|
+| [`concepts/component-padding.md`](./concepts/component-padding.md) | draft | Spacing + Sizing + Typography (component-internal padding tokens) |
 | `concepts/button-hierarchy.md` | todo | Color + Typography + Spacing + Radius |
 | `concepts/elevation-system.md` | todo | Elevation + Effects (shadow) + Border + Z-index |
 | `concepts/density-and-rhythm.md` | todo | Spacing + Sizing + Typography |

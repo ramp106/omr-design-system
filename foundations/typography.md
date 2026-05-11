@@ -390,7 +390,7 @@ The `text-common-styles` utility maps HTML elements to the typography scale:
 
 - [`color.md`](./color.md) — text colours pair with typography: `text-main` + `txt-body-m-regular`
 - [`breakpoints.md`](./breakpoints.md) (todo) — tablet (640px) and laptop (1024px) drive fluid scaling
-- [`spacing.md`](./spacing.md) (todo) — vertical rhythm between text elements
+- [`spacing.md`](./spacing.md) — vertical rhythm between text elements
 - [`../concepts/visual-hierarchy.md`](../concepts/visual-hierarchy.md) (todo) — how typography weight and colour combine for emphasis
 - [`../concepts/density-and-rhythm.md`](../concepts/density-and-rhythm.md) (todo) — spacing between typographic elements
 - [`../concepts/accessibility.md`](../concepts/accessibility.md) (todo) — contrast 4.5:1, color-as-meaning, reduced motion (cross-cutting)
