@@ -39,7 +39,7 @@ will be added in subsequent iterations.
 | Foundation | What it contributes |
 |---|---|
 | [Spacing](../foundations/spacing.md) | The numeric scale (`p-1` … `p-96`) that every padding token aliases to |
-| [Sizing](../foundations/sizing.md) (todo) | Component heights/widths — paired with padding to determine total visual size (e.g. button `h-10` + horizontal padding) |
+| [Sizing](../foundations/sizing.md) | Component heights/widths — paired with padding to determine total visual size (e.g. button `h-10` + horizontal padding) |
 | [Typography](../foundations/typography.md) | Internal vertical rhythm (line-height of body text affects effective padding-feel) |
 
 ---
@@ -124,7 +124,7 @@ icon from label.
 > a single sanctioned exception. → TBD.
 
 > **Heights are sizing tokens, not padding tokens.** `h-8` / `h-10` / `h-12` / `h-16`
-> for the four button sizes will be documented in [`sizing.md`](../foundations/sizing.md) (todo).
+> for the four button sizes are documented in [`sizing.md`](../foundations/sizing.md).
 
 ---
 
@@ -144,7 +144,7 @@ between input element and prepend/append slots.
 | `padding-input-append-r` | 14px | `pr-3.5` | `InputField.vue`: append wrapper `mr-3.5` |
 
 > **Heights** (`h-8` / `h-10` / `h-12` for sizes `s` / `m` / `default`)
-> are sizing tokens — see [`sizing.md`](../foundations/sizing.md) (todo).
+> are sizing tokens — see [`sizing.md`](../foundations/sizing.md).
 
 > **All values are on-scale** (10 = `p-2.5`, 14 = `p-3.5`, 8 = `p-2`) but currently
 > written as the raw scale utilities. ✅ No drift, just verbose token coverage.
@@ -299,7 +299,7 @@ then. Until then: leave margin to the consumer.
 
 - [`foundations/spacing.md`](../foundations/spacing.md) — the primitive scale
   every component-padding token aliases to
-- [`foundations/sizing.md`](../foundations/sizing.md) (todo) — heights/widths
+- [`foundations/sizing.md`](../foundations/sizing.md) — heights/widths
   paired with padding (e.g. button `h-10` + horizontal padding)
 - [`foundations/typography.md`](../foundations/typography.md) — line-height
   contributes to perceived padding inside text-bearing components
