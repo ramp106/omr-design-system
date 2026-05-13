@@ -113,8 +113,8 @@ tokens:
       examples: ["w-[300px] (15x)", "w-[500px] (9x)", "w-[250px] (8x)", "w-[220px] (3x)"]
       action: "Most need design review — many are dropdown/modal widths that should be on-scale or component-tokenized."
     arbitrary-max-widths:
-      examples: ["max-w-[500px] (8x)", "max-w-[1440px] (4x — matches --width-desktop)", "max-w-[1096px] (3x)", "max-w-[300px] (2x)", "max-w-[288px] (2x — on-scale = max-w-72)", "max-w-[220px] (3x)", "max-w-[250px] (3x)", "max-w-[70%] (2x)"]
-      action: "max-w-[1440px] should reference --width-desktop. max-w-[288px] = max-w-72 (trivial). Others need design review."
+      examples: ["max-w-[500px] (8x — fix to max-w-lg per dev confirmation)", "max-w-[1440px] (4x — use max-w-content token)", "max-w-[1096px] (3x — fix to max-w-6xl per dev confirmation)", "max-w-[300px] (2x)", "max-w-[288px] (2x — on-scale = max-w-72)", "max-w-[220px] (3x)", "max-w-[250px] (3x)", "max-w-[70%] (2x)"]
+      action: "max-w-[500px] → max-w-lg (12px drift, dev-confirmed). max-w-[1096px] → max-w-6xl (56px drift, dev-confirmed). max-w-[1440px] → max-w-content token. max-w-[288px] = max-w-72 (trivial). Others need design review."
     arbitrary-heights:
       examples: ["h-[70px] (6x)", "h-[300px] (6x)", "h-[96px] (5x — on-scale = h-24)", "min-h-[420px] (3x)"]
       action: "h-[96px] = h-24 (trivial fix). h-[70px] needs design review (nearest h-16=64 or h-20=80). h-[300px] = h-72 (288) or h-80 (320)."
@@ -410,9 +410,9 @@ A non-trivial number of arbitrary sizing values appear in omr-js code. Documente
 
 | Pattern | Count | Action |
 |---|---|---|
-| `max-w-[500px]` | 8× | Off-scale; nearest `max-w-md` (448) or `max-w-lg` (512). |
-| `max-w-[1440px]` | 4× | **Matches** `--width-desktop`. Should reference the variable, not hardcode. |
-| `max-w-[1096px]` | 3× | Off-scale; investigate intent. |
+| `max-w-[500px]` | 8× | **Fix to `max-w-lg`** (512 px, 12 px drift). Dev-confirmed: drift, not intentional design. Mostly in `SectionStyledHero` variants. |
+| `max-w-[1440px]` | 4× | Use `max-w-content` token (1440 px) — see [`spacing.md`](./spacing.md#page-level-content-width--max-w-content). |
+| `max-w-[1096px]` | 3× | **Fix to `max-w-6xl`** (1152 px, 56 px drift). Dev-confirmed: drift, not intentional design. In `SectionCta`, `SectionFeaturesTable`. Visual spot-check recommended for the 56 px diff. |
 | `max-w-[300px]` | 2× | Off-scale. |
 | `max-w-[288px]` | 2× | **On-scale** = `max-w-72` (288 on the spacing scale). Trivial fix. |
 | `max-w-[220px]` | 3× | Off-scale. |
